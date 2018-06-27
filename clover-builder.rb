@@ -19,7 +19,7 @@ class CloverBuilder < Formula
 
   def install
     # Define GOPATH
-    ENV["GOPATH"] = buildpath
+    ENV["GOPATH"] = buildpath/"go"
     
     # Create the required directories
     (buildpath/"go/bin").mkpath
