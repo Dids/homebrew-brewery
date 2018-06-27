@@ -31,7 +31,7 @@ class CloverBuilder < Formula
 
     ## FIXME: Do not use `go get`. Please ask upstream to implement Go vendoring
     # Install build dependencies
-    system "cd", buildpath/"go/src/github.com/Dids/clover-builder-cli", "&&", "go", "get", "."
+    # system "cd", buildpath/"go/src/github.com/Dids/clover-builder-cli", "&&", "go", "get", "."
 
     # Build the application
     system "go", "build", "-o", buildpath/"clover-builder"
