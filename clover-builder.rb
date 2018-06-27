@@ -31,7 +31,7 @@ class CloverBuilder < Formula
     ln_s buildpath, buildpath/"go/src/github.com/Dids/clover-builder-cli"
 
     # Install build dependencies
-    Dir.chdir buildpath/"src/github.com/Dids/clover-builder-cli" do
+    Dir.chdir buildpath/"go/src/github.com/Dids/clover-builder-cli" do
       system "go", "get", "."
     end
 
