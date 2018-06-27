@@ -31,12 +31,7 @@ class CloverBuilder < Formula
     ln_s buildpath, buildpath/"go/src/github.com/Dids/clover-builder-cli"
 
     # Install build dependencies
-    #Dir.chdir buildpath/"go/src/github.com/Dids/clover-builder-cli" do
-    #Dir.chdir(buildpath/"go/src/github.com/Dids/clover-builder-cli")
-    #system "pwd"
     system "cd", buildpath/"go/src/github.com/Dids/clover-builder-cli", "&&", "go", "get", "."
-    #Dir.chdir(buildpath)
-    #end
 
     # Build the application
     system "go", "build", "-o", buildpath/"clover-builder"
