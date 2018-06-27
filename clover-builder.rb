@@ -32,10 +32,10 @@ class CloverBuilder < Formula
 
     # Install build dependencies
     #Dir.chdir buildpath/"go/src/github.com/Dids/clover-builder-cli" do
-    Dir.chdir(buildpath/"go/src/github.com/Dids/clover-builder-cli")
-    system "pwd"
-    system "cd go/src/github.com/Dids/clover-builder-cli", "go", "get", "."
-    Dir.chdir(buildpath)
+    #Dir.chdir(buildpath/"go/src/github.com/Dids/clover-builder-cli")
+    #system "pwd"
+    system "cd go/src/github.com/Dids/clover-builder-cli && go get ."
+    #Dir.chdir(buildpath)
     #end
 
     # Build the application
