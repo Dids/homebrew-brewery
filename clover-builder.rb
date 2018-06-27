@@ -31,14 +31,13 @@ class CloverBuilder < Formula
     ln_s buildpath, buildpath/"go/src/github.com/Dids/clover-builder-cli"
 
     # Install build dependencies
-    Dir.chdir buildpath/"go/src/github.com/Dids/clover-builder-cli" do
-      system "pwd"
-      system "go", "get", "."
-    end
+    #Dir.chdir buildpath/"go/src/github.com/Dids/clover-builder-cli" do
+      system "GOPATH=$PWD/go", "go", "get", "."
+    #end
 
     # Build the application
     #system "go", "build", "-o", bin/"clover-builder"
-    system "go", "build", "-o", buildpath/"clover-builder"
+    system "GOPATH=$PWD/go", "go", "build", "-o", buildpath/"clover-builder"
     bin.install buildpath/"clover-builder"
   end
 
