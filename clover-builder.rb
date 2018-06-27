@@ -34,7 +34,7 @@ class CloverBuilder < Formula
     #Dir.chdir buildpath/"go/src/github.com/Dids/clover-builder-cli" do
     Dir.chdir(buildpath/"go/src/github.com/Dids/clover-builder-cli")
     system "pwd"
-    system "go", "get", "."
+    system "cd go/src/github.com/Dids/clover-builder-cli", "go", "get", "."
     Dir.chdir(buildpath)
     #end
 
