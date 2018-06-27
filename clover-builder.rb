@@ -3,7 +3,7 @@ class CloverBuilder < Formula
   homepage "https://github.com/Dids/clover-builder-cli"
   url "https://github.com/Dids/clover-builder-cli/archive/987867fa9c4d8455a43eed2df1cd27525ac29368.tar.gz"
   sha256 "f146077e881b1812bff61cf67aa315165c5456e131919dc233bcd198145c57d8"
-  version "0.0.2"
+  #version "0.0.1"
 
   ## TODO: We technically require build tools too, so Xcode CLI tools should be required?
 
@@ -37,8 +37,8 @@ class CloverBuilder < Formula
 
     # Build the application
     #system "go", "build", "-o", bin/"clover-builder"
-    system "go", "build", "-o", buildpath/"go/bin/clover-builder"
-    bin.install buildpath/"go/bin/clover-builder"
+    system "go", "build", "-o", buildpath/"clover-builder"
+    bin.install buildpath/"clover-builder"
   end
 
   ## TODO: Properly test and implement this
