@@ -1,7 +1,7 @@
-class CloverBuilder < Formula
+class Clobber < Formula
   desc "Command-line application for building Clover"
-  homepage "https://github.com/Dids/clover-builder-cli"
-  url "https://github.com/Dids/clover-builder-cli/archive/987867fa9c4d8455a43eed2df1cd27525ac29368.tar.gz"
+  homepage "https://github.com/Dids/clobber"
+  url "https://github.com/Dids/clobber/archive/987867fa9c4d8455a43eed2df1cd27525ac29368.tar.gz"
   sha256 "f146077e881b1812bff61cf67aa315165c5456e131919dc233bcd198145c57d8"
   # version "0.0.1"
 
@@ -27,20 +27,20 @@ class CloverBuilder < Formula
     (buildpath/"go/src/github.com/Dids").mkpath
 
     # Symlink the package directory
-    ln_s buildpath, buildpath/"go/src/github.com/Dids/clover-builder-cli"
+    ln_s buildpath, buildpath/"go/src/github.com/Dids/clobber"
 
     ## FIXME: Do not use `go get`. Please ask upstream to implement Go vendoring
     # Install build dependencies
-    # system "cd", buildpath/"go/src/github.com/Dids/clover-builder-cli", "&&", "go", "get", "."
+    # system "cd", buildpath/"go/src/github.com/Dids/clobber", "&&", "go", "get", "."
 
     # Build the application
-    system "go", "build", "-o", buildpath/"clover-builder"
-    bin.install buildpath/"clover-builder"
+    system "go", "build", "-o", buildpath/"clobber"
+    bin.install buildpath/"clobber"
   end
 
   ## TODO: Properly test and implement this
   test do
     ## TODO: Also run go tests? Maybe? No?
-    system bin/"clover-builder", "--help"
+    system bin/"clobber", "--help"
   end
 end
