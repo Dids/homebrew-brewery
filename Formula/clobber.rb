@@ -32,7 +32,6 @@ class Clobber < Formula
     ## FIXME: Do not use `go get`. Please ask upstream to implement Go vendoring
     # Install build dependencies
     system "cd go/src/github.com/Dids/clobber && go get -d -t -v ./"
-    #system "go", "get", buildpath/"go/src/github.com/Dids/clobber"
 
     # Build the application
     system "go", "build", "-o", buildpath/"clobber"
