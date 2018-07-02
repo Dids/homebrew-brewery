@@ -1,0 +1,12 @@
+# Set Objective-C as the language, which also gets us macOS and Xcode
+language: objective-c
+
+# Update brew before doing anything
+before_install:
+  - brew update >/dev/null
+
+# Properly test each formula individually
+script:
+  - brew audit ./Formula/*.rb
+  - brew install -v ./Formula/*.rb
+  - brew test ./Formula/*.rb

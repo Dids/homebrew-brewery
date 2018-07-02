@@ -9,10 +9,8 @@ class Clobber < Formula
   # Setup head/master branch support (install with --HEAD)
   head "https://github.com/Dids/Clobber.git"
 
-  ## TODO: What is this?
+  # No bottling necessary
   bottle :unneeded
-
-  ## TODO: We technically require build tools too, so Xcode CLI tools should be required?
 
   # We need go for building
   depends_on "go" => :build
