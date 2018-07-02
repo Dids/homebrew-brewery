@@ -17,7 +17,7 @@ class Clobber < Formula
   depends_on "go" => :build
   
   # We need Xcode/xcodebuild for running the application
-  depends_on :xcode
+  #depends_on :xcode
 
   # The rest are required for running
   depends_on "subversion"
