@@ -5,7 +5,7 @@ class Clobber < Formula
   sha256 "bcdfa31d986960afe497b148e31596dd00045c1fe35db8fc43b9bb803ab8999f"
   #version "0.0.1"
 
-  # Setup head/master branch support (install with --head)
+  # Setup head/master branch support (install with --HEAD)
   head "https://github.com/Dids/Clobber.git"
 
   ## TODO: What is this?
@@ -17,7 +17,7 @@ class Clobber < Formula
   depends_on "go" => :build
   
   # We need Xcode/xcodebuild for running the application
-  #depends_on :xcode
+  depends_on :xcode
 
   # The rest are required for running
   depends_on "subversion"
