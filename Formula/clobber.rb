@@ -5,6 +5,9 @@ class Clobber < Formula
   sha256 "bcdfa31d986960afe497b148e31596dd00045c1fe35db8fc43b9bb803ab8999f"
   #version "0.0.1"
 
+  # Setup head/master branch support (install with --head)
+  head "https://github.com/Dids/Clobber.git"
+
   ## TODO: What is this?
   bottle :unneeded
 
@@ -19,6 +22,7 @@ class Clobber < Formula
   # The rest are required for running
   depends_on "subversion"
 
+  # Define the installation steps
   def install
     # Define GOPATH
     ENV["GOPATH"] = buildpath/"go"
