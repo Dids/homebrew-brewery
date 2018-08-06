@@ -1,10 +1,10 @@
 class Clobber < Formula
   desc "Command-line application for building Clover"
   homepage "https://github.com/Dids/clobber"
-  url "https://github.com/Dids/clobber/archive/6bace46e53e7e157b6981a9daf9370121e481022.tar.gz"
+  url "https://github.com/Dids/clobber/archive/6b725030564847abfa0bbc9858d869a16d430469.tar.gz"
   version "0.0.1"
-  sha256 "c1fbc0132d5409a0242431d042a8e5c8bb8fde2e70b8f72e1217e2dad931e092"
-  revision 0
+  sha256 "7a80fa2bb9d9de363883edb27aaa0b4b7243c1c4c1dfad216bd6efe6c558e457"
+  revision 1
 
   # Setup head/master branch support (install with --HEAD)
   head "https://github.com/Dids/Clobber.git"
@@ -38,14 +38,10 @@ class Clobber < Formula
     # Symlink the package directory
     ln_s buildpath, buildpath/"go/src/github.com/Dids/clobber"
 
-    ## FIXME: Do not use `go get`. Please ask upstream to implement Go vendoring
     # Install build dependencies
-    #system "cd go/src/github.com/Dids/clobber && go get -d -t -v ./"
     system "cd go/src/github.com/Dids/clobber && govendor sync"
 
     # Build the application
-    #system "go", "build", "-o", buildpath/"clobber"
-    #system "go", "build", "-o", buildpath/"clobber", "-ldflags=\"-X main.version=$(git describe --always --long --dirty)\""
     versionFlags = "-ldflags=\"-X main.version=" + version + "\""
     system "go", "build", "-o", buildpath/"clobber", versionFlags
     bin.install buildpath/"clobber"
