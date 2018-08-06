@@ -46,7 +46,8 @@ class Clobber < Formula
     # Build the application
     #system "go", "build", "-o", buildpath/"clobber"
     #system "go", "build", "-o", buildpath/"clobber", "-ldflags=\"-X main.version=$(git describe --always --long --dirty)\""
-    system "go", "build", "-o", buildpath/"clobber", "-ldflags=\"-X main.version="version"\""
+    versionFlags = "-ldflags=\"-X main.version=" + version + "\""
+    system "go", "build", "-o", buildpath/"clobber", versionFlags
     bin.install buildpath/"clobber"
   end
 
