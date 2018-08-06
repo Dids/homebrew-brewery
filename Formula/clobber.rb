@@ -14,6 +14,9 @@ class Clobber < Formula
 
   # We need go for building
   depends_on "go" => :build
+
+  # We also need govendor for build dependencies
+  depends_on "govendor" => :build
   
   # We need Xcode/xcodebuild for running the application
   depends_on :xcode
@@ -37,10 +40,13 @@ class Clobber < Formula
 
     ## FIXME: Do not use `go get`. Please ask upstream to implement Go vendoring
     # Install build dependencies
-    system "cd go/src/github.com/Dids/clobber && go get -d -t -v ./"
+    #system "cd go/src/github.com/Dids/clobber && go get -d -t -v ./"
+    system "cd go/src/github.com/Dids/clobber && govendor sync"
 
     # Build the application
-    system "go", "build", "-o", buildpath/"clobber"
+    #system "go", "build", "-o", buildpath/"clobber"
+    #system "go", "build", "-o", buildpath/"clobber", "-ldflags=\"-X main.version=$(git describe --always --long --dirty)\""
+    system "go", "build", "-o", buildpath/"clobber", "-ldflags=\"-X main.version="version"\""
     bin.install buildpath/"clobber"
   end
 
