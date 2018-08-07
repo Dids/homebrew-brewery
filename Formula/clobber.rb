@@ -42,7 +42,7 @@ class Clobber < Formula
     system "cd go/src/github.com/Dids/clobber && govendor sync"
 
     # Build the application
-    versionFlags = "-ldflags=\"-X main.version=" + version + "\""
+    versionFlags = "-ldflags=\"-X main.Version=" + version + "\""
     system "go", "build", "-o", buildpath/"clobber", versionFlags
     bin.install buildpath/"clobber"
   end
