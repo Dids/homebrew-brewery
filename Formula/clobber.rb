@@ -4,7 +4,7 @@ class Clobber < Formula
   url "https://github.com/Dids/clobber/archive/v0.0.1.tar.gz"
   version "0.0.1"
   sha256 "769d5b00eee8f7372baa7f35cfcec199b154aa228075887827b77d6ed9e8cbec"
-  revision 0
+  revision 2
 
   # Setup head/master branch support (install with --HEAD)
   head "https://github.com/Dids/Clobber.git"
