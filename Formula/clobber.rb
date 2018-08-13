@@ -41,13 +41,13 @@ class Clobber < Formula
     system "cd go/src/github.com/Dids/clobber && govendor sync"
 
     # Print out target version
-    opoo "Building version #{version}"
+    ohai "Building version #{version}.."
 
+    ## NOTE: Homebrew/Formula/Ruby doesn't seem to like escaping quotes,
+    ##       so we had to resort to using a build script/wrapper instead
+    
     # Build the application
-    #versionFlags = "-ldflags=\"-X main.Version=" + version + "\""
-    #system "go", "build", versionFlags, "-o", buildpath/"clobber"
     system "./.scripts/build.sh", version, buildpath/"clobber"
-    #system "go", "build", "-ldflags", "\"-X main.Version=#{version}\"", "-o", buildpath/"clobber"
 
     # Print the version
     system buildpath/"clobber",  "--version"
@@ -59,11 +59,10 @@ class Clobber < Formula
     if "clobber version #{version}" != `#{bin}/clobber --version`.strip
       odie "Output of 'clobber --version' did not match the current version (#{version})."
     end
-    #assert_equal version, `#{bin}/clobber --version`.strip
   end
 
   test do
     # Test that the version matches
-    assert_equal version, `#{bin}/clobber --version`.strip
+    assert_equal "clobber version #{version}", `#{bin}/clobber --version`.strip
   end
 end
