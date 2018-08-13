@@ -12,7 +12,7 @@ class Clobber < Formula
   bottle :unneeded
 
   # We need go for building
-  depends_on "go" => :build
+  depends_on "go@1.10" => :build
 
   # We also need govendor for build dependencies
   depends_on "govendor" => :build
