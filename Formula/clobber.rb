@@ -46,8 +46,7 @@ class Clobber < Formula
     bin.install buildpath/"clobber"
 
     # Print the version
-    versionCommand = buildpath/"clobber --version"
-    system versionCommand
+    system bin/"clobber --version"
   end
 
   ## TODO: Properly test and implement this
