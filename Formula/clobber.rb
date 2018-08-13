@@ -49,7 +49,10 @@ class Clobber < Formula
     system bin/"clobber",  "--version"
 
     # Test that the version matches
-    assert_equal version, `#{bin}/clobber --version`.strip
+    if version != `#{bin}/clobber --version`.strip
+      cause "Version mismatch"
+    end
+    #assert_equal version, `#{bin}/clobber --version`.strip
   end
 
   test do
