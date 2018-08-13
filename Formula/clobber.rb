@@ -50,7 +50,7 @@ class Clobber < Formula
 
     # Test that the version matches
     if version != `#{bin}/clobber --version`.strip
-      cause "Version mismatch"
+      odie "Output of 'clobber --version' did not match the current version."
     end
     #assert_equal version, `#{bin}/clobber --version`.strip
   end
