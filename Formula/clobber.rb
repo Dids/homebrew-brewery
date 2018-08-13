@@ -43,7 +43,7 @@ class Clobber < Formula
     # Build the application
     #versionFlags = "-ldflags=\"-X main.Version=" + version + "\""
     #system "go", "build", versionFlags, "-o", buildpath/"clobber"
-    system "go", "build", "-ldflags", `"-X main.Version=#{version}"`, "-o", buildpath/"clobber"
+    system "go", "build", "-ldflags", `\"-X main.Version=#{version}\"`, "-o", buildpath/"clobber"
 
     # Print the version
     system buildpath/"clobber",  "--version"
