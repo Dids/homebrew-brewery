@@ -46,12 +46,14 @@ class Clobber < Formula
     bin.install buildpath/"clobber"
 
     # Print the version
-    system bin/"clobber --version"
+    system bin/"clobber",  "--version"
+
+    # Test that the version matches
+    assert_equal version, `#{bin}/clobber --version`.strip
   end
 
-  ## TODO: Properly test and implement this
   test do
-    ## TODO: Also run go tests? Maybe? No?
-    system bin/"clobber", "--help"
+    # Test that the version matches
+    assert_equal version, `#{bin}/clobber --version`.strip
   end
 end
