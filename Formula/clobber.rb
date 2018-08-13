@@ -45,7 +45,7 @@ class Clobber < Formula
     system "go", "build", "-o", buildpath/"clobber", versionFlags
 
     # Print the version
-    system bin/"clobber",  "--version"
+    system buildpath/"clobber",  "--version"
 
     # Install the application
     bin.install buildpath/"clobber"
