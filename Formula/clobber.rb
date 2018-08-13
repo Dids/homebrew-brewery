@@ -1,8 +1,8 @@
 class Clobber < Formula
   desc "Command-line application for building Clover"
   homepage "https://github.com/Dids/clobber"
-  url "https://github.com/Dids/clobber/archive/v0.0.2.tar.gz"
-  sha256 "e766e757fe592cdf875eb110fa94e1ea4fd71d2319a9a07e2b9b16bb40751b9c"
+  url "https://github.com/Dids/clobber/archive/v0.0.3.tar.gz"
+  sha256 "6e785616bb8fc893fff07b7fbce9a0b5ab817ba5e4dd72771402110c6626b0f4"
   revision 0
 
   # Setup head/master branch support (install with --HEAD)
@@ -45,7 +45,7 @@ class Clobber < Formula
 
     ## NOTE: Homebrew/Formula/Ruby doesn't seem to like escaping quotes,
     ##       so we had to resort to using a build script/wrapper instead
-    
+
     # Build the application
     system "./.scripts/build.sh", version, buildpath/"clobber"
 
