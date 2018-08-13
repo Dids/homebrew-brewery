@@ -44,6 +44,9 @@ class Clobber < Formula
     versionFlags = "-ldflags=\"-X main.Version=" + version + "\""
     system "go", "build", "-o", buildpath/"clobber", versionFlags
     bin.install buildpath/"clobber"
+
+    # Print the version
+    system buildpath/"clobber --version"
   end
 
   ## TODO: Properly test and implement this
