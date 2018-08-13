@@ -55,12 +55,8 @@ class Clobber < Formula
     # Install the application
     bin.install buildpath/"clobber"
 
-    # Print the version
-    system bin/"clobber",  "--version"
-
     # Test that the version matches
-    opoo "Version: " + `#{bin}/clobber --version`.strip
-    if version != `#{bin}/clobber --version`.strip
+    if "clobber version #{version}" != `#{bin}/clobber --version`.strip
       odie "Output of 'clobber --version' did not match the current version (#{version})."
     end
     #assert_equal version, `#{bin}/clobber --version`.strip
