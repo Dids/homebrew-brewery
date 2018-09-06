@@ -3,7 +3,7 @@ class XcodebuildRemote < Formula
   homepage "https://github.com/Dids/xcodebuild-remote"
   version "0.0.1"
   url "https://github.com/Dids/xcodebuild-remote/archive/master.tar.gz"
-  sha256 "a0f4700dfd2cd4afeaa925d3cb4c5d6403ee6592833889bad839348a1aa8696c"
+  sha256 "821afc7406b02dd7874f31f1b947282cedb457c3bbfa982ebf0e488c81b25598"
   revision 0
 
   # Setup head/master branch support (install with --HEAD)
