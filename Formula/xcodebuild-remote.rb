@@ -1,6 +1,7 @@
 class XcodebuildRemote < Formula
   desc "A tool for extending xcodebuild to support remote repositories"
   homepage "https://github.com/Dids/xcodebuild-remote"
+  version "0.0.1"
   url "https://github.com/Dids/xcodebuild-remote/archive/master.tar.gz"
   sha256 "a0f4700dfd2cd4afeaa925d3cb4c5d6403ee6592833889bad839348a1aa8696c"
   revision 0
