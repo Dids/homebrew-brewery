@@ -10,3 +10,4 @@ script:
   - brew audit ./Formula/*.rb
   - brew install -v ./Formula/*.rb
   - brew test ./Formula/*.rb
+  - brew cask audit ./Cask/*.rb --download
