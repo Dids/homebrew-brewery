@@ -12,11 +12,11 @@ class XcodebuildRemote < Formula
   # No bottling necessary
   bottle :unneeded
 
+  # We need dep for build dependencies
+  depends_on "dep" => :build
+
   # We need go for building
   depends_on "go" => :build
-
-  # We also need dep for build dependencies
-  depends_on "dep" => :build
 
   # We needs subversion for SVN support
   depends_on "subversion"
