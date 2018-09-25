@@ -17,12 +17,12 @@ class XcodebuildRemote < Formula
 
   # We also need dep for build dependencies
   depends_on "dep" => :build
+
+  # We needs subversion for SVN support
+  depends_on "subversion"
   
   # We need Xcode/xcodebuild for running the application
   depends_on :xcode
-
-  # The rest are required for running
-  depends_on "subversion"
 
   # Define the installation steps
   def install
