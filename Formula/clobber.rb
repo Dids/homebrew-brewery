@@ -14,8 +14,8 @@ class Clobber < Formula
   # We need go for building
   depends_on "go" => :build
 
-  # We also need govendor for build dependencies
-  depends_on "govendor" => :build
+  # We also need godep for build dependencies
+  depends_on "godep" => :build
   
   # We need Xcode/xcodebuild for running the application
   depends_on :xcode
@@ -38,7 +38,7 @@ class Clobber < Formula
     ln_s buildpath, buildpath/"go/src/github.com/Dids/clobber"
 
     # Install build dependencies
-    system "cd go/src/github.com/Dids/clobber && govendor sync"
+    system "cd go/src/github.com/Dids/clobber && dep ensure"
 
     # Print out target version
     ohai "Building version #{version}.."
