@@ -3,7 +3,7 @@ class Clobber < Formula
   homepage "https://github.com/Dids/clobber"
   url "https://github.com/Dids/clobber/archive/v0.1.5.tar.gz"
   sha256 "1a872aa961b77ad47e560e0bb7b0e9facc80dc5ff8ffd1dfc27307b9853567f5"
-  revision 5
+  revision 10
 
   # Setup head/master branch support (install with --HEAD)
   head "https://github.com/Dids/Clobber.git"
@@ -29,36 +29,40 @@ class Clobber < Formula
     # Define GOPATH
     ENV["GOPATH"] = buildpath/"go"
 
-    # Create the required directories
+    # Create the required directory structure
     (buildpath/"go/bin").mkpath
     (buildpath/"go/pkg").mkpath
-    (buildpath/"go/src").mkpath
+    #(buildpath/"go/src").mkpath
     (buildpath/"go/src/github.com/Dids/clobber").mkpath
 
-    # Copy everything to the package directory (except the go/ folder)
-    system "rsync -av ./ go/src/github.com/Dids/clobber/ --exclude=go/"
+    # Copy everything to the Go project directory (except the go/ folder)
+    system "rsync -a ./ go/src/github.com/Dids/clobber/ --exclude=go/"
 
-    # Install build dependencies
-    system "dep ensure"
+    # Switch to the Go project directory
+    Dir.chdir 'go/src/github.com/Dids/clobber' do
+      ohai "Switched to directory: #{Dir.pwd}"
+      
+      # Install build dependencies
+      system "dep ensure"
 
-    # Print out target version
-    ohai "Building version #{version}.."
+      # Print out target version
+      ohai "Building version #{version}.."
 
-    ## NOTE: Homebrew/Formula/Ruby doesn't seem to like escaping quotes,
-    ##       so we had to resort to using a build script/wrapper instead
+      ## NOTE: Homebrew/Formula/Ruby doesn't seem to like escaping quotes,
+      ##       so we had to resort to using a build script/wrapper instead
+      # Build the application
+      system "./.scripts/build.sh", version, buildpath/"clobber"
 
-    # Build the application
-    system "./.scripts/build.sh", version, buildpath/"clobber"
+      # Print the version
+      system buildpath/"clobber",  "--version"
 
-    # Print the version
-    system buildpath/"clobber",  "--version"
+      # Install the application
+      bin.install buildpath/"clobber"
 
-    # Install the application
-    bin.install buildpath/"clobber"
-
-    # Test that the version matches
-    if "clobber version #{version}" != `#{bin}/clobber --version`.strip
-      odie "Output of 'clobber --version' did not match the current version (#{version})."
+      # Test that the version matches
+      if "clobber version #{version}" != `#{bin}/clobber --version`.strip
+        odie "Output of 'clobber --version' did not match the current version (#{version})."
+      end
     end
   end
 
