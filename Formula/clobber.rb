@@ -3,7 +3,7 @@ class Clobber < Formula
   homepage "https://github.com/Dids/clobber"
   url "https://github.com/Dids/clobber/archive/v0.1.5.tar.gz"
   sha256 "1a872aa961b77ad47e560e0bb7b0e9facc80dc5ff8ffd1dfc27307b9853567f5"
-  revision 3
+  revision 4
 
   # Setup head/master branch support (install with --HEAD)
   head "https://github.com/Dids/Clobber.git"
@@ -37,8 +37,11 @@ class Clobber < Formula
     # Symlink the package directory
     ln_s buildpath, buildpath/"go/src/github.com/Dids/clobber"
 
+    # Change working directory
+    Dir.chdir('go/src/github.com/Dids/clobber')
+
     # Install build dependencies
-    system "cd go/src/github.com/Dids/clobber && dep ensure"
+    system "dep ensure"
 
     # Print out target version
     ohai "Building version #{version}.."
@@ -47,7 +50,7 @@ class Clobber < Formula
     ##       so we had to resort to using a build script/wrapper instead
 
     # Build the application
-    system "cd go/src/github.com/Dids/clobber && ./.scripts/build.sh", version, buildpath/"clobber"
+    system "./.scripts/build.sh", version, buildpath/"clobber"
 
     # Print the version
     system buildpath/"clobber",  "--version"
