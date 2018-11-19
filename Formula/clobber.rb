@@ -3,7 +3,7 @@ class Clobber < Formula
   homepage "https://github.com/Dids/clobber"
   url "https://github.com/Dids/clobber/archive/v0.1.5.tar.gz"
   sha256 "1a872aa961b77ad47e560e0bb7b0e9facc80dc5ff8ffd1dfc27307b9853567f5"
-  revision 2
+  revision 3
 
   # Setup head/master branch support (install with --HEAD)
   head "https://github.com/Dids/Clobber.git"
@@ -47,7 +47,7 @@ class Clobber < Formula
     ##       so we had to resort to using a build script/wrapper instead
 
     # Build the application
-    system "./.scripts/build.sh", version, buildpath/"clobber"
+    system "cd go/src/github.com/Dids/clobber && ./.scripts/build.sh", version, buildpath/"clobber"
 
     # Print the version
     system buildpath/"clobber",  "--version"
