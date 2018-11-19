@@ -2,8 +2,8 @@ class Clobber < Formula
   desc "Command-line application for building Clover"
   homepage "https://github.com/Dids/clobber"
   url "https://github.com/Dids/clobber/archive/v0.1.5.tar.gz"
-  sha256 "1db2ef703388287faa584c870946ecd1f28392b3db85780bab8053cbcd662bde"
-  revision 0
+  sha256 "1a872aa961b77ad47e560e0bb7b0e9facc80dc5ff8ffd1dfc27307b9853567f5"
+  revision 2
 
   # Setup head/master branch support (install with --HEAD)
   head "https://github.com/Dids/Clobber.git"
