@@ -3,7 +3,7 @@ class Clobber < Formula
   homepage "https://github.com/Dids/clobber"
   url "https://github.com/Dids/clobber/archive/v0.1.5.tar.gz"
   sha256 "1a872aa961b77ad47e560e0bb7b0e9facc80dc5ff8ffd1dfc27307b9853567f5"
-  revision 4
+  revision 5
 
   # Setup head/master branch support (install with --HEAD)
   head "https://github.com/Dids/Clobber.git"
@@ -23,6 +23,7 @@ class Clobber < Formula
   # We need Xcode/xcodebuild for running the application
   depends_on :xcode
 
+  ## FIXME: There MUST be a better way to handle "virtual" Go folder structures..
   # Define the installation steps
   def install
     # Define GOPATH
@@ -32,13 +33,10 @@ class Clobber < Formula
     (buildpath/"go/bin").mkpath
     (buildpath/"go/pkg").mkpath
     (buildpath/"go/src").mkpath
-    (buildpath/"go/src/github.com/Dids").mkpath
+    (buildpath/"go/src/github.com/Dids/clobber").mkpath
 
-    # Symlink the package directory
-    ln_s buildpath, buildpath/"go/src/github.com/Dids/clobber"
-
-    # Change working directory
-    Dir.chdir('go/src/github.com/Dids/clobber')
+    # Copy everything to the package directory (except the go/ folder)
+    system "rsync -av ./ go/src/github.com/Dids/clobber/ --exclude=go/"
 
     # Install build dependencies
     system "dep ensure"
