@@ -1,8 +1,8 @@
 class Clobber < Formula
   desc "Command-line application for building Clover"
   homepage "https://github.com/Dids/clobber"
-  url "https://github.com/Dids/clobber/archive/v0.1.6.tar.gz"
-  sha256 "6ed7a518f0bc2b67e84c828c61167f6bd93bb0739d07d09cfe6524084bf5bb88"
+  url "https://github.com/Dids/clobber/archive/v0.1.7.tar.gz"
+  sha256 "a10cb35a09278f1af76672f4fe59efc158fd9ad832fdffb13cfeae6c5c21f69d"
   revision 0
 
   # Setup HEAD support (install with --HEAD)
@@ -27,28 +27,40 @@ class Clobber < Formula
   def install
     # Define GOPATH
     ENV["GOPATH"] = buildpath/"go"
+    ENV["GOBIN"] = buildpath/"go/bin"
 
     # Create the required directory structure
     (buildpath/"go/bin").mkpath
     (buildpath/"go/pkg").mkpath
     (buildpath/"go/src").mkpath
+    (buildpath/"go/src/github.com/Dids/clobber").mkpath
 
-    # Print out target version
-    ohai "Building version #{version}.."
+    # Copy everything to the Go project directory (except the go/ folder)
+    system "rsync -a ./ go/src/github.com/Dids/clobber/"
 
-    # Build the application
-    system "make", "deps"
-    system "make", "build", "test", "BINARY_VERSION=#{version}"
+    # Switch to the Go project directory
+    Dir.chdir 'go/src/github.com/Dids/clobber' do
+      ohai "Switched to directory: #{Dir.pwd}"
 
-    # Print the version
-    system buildpath/"clobber", "--version"
+      # Print out target version
+      ohai "Building version #{version}.."
 
-    # Install the application
-    bin.install buildpath/"clobber"
+      # Build the application
+      system "make", "print"
+      system "make", "deps"
+      system "make", "build", "BINARY_VERSION=#{version}", "BINARY_OUTPUT=#{buildpath}/clobber"
+      system "make", "test"
 
-    # Test that the version matches
-    if "clobber version #{version}" != `#{bin}/clobber --version`.strip
-      odie "Output of 'clobber --version' did not match the current version (#{version})."
+      # Print the version
+      system buildpath/"clobber", "--version"
+
+      # Install the application
+      bin.install buildpath/"clobber"
+
+      # Test that the version matches
+      if "clobber version #{version}" != `#{bin}/clobber --version`.strip
+        odie "Output of 'clobber --version' did not match the current version (#{version})."
+      end
     end
   end
 
