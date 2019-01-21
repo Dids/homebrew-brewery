@@ -1,8 +1,8 @@
 class Clobber < Formula
   desc "Command-line application for building Clover"
   homepage "https://github.com/Dids/clobber"
-  url "https://github.com/Dids/clobber/archive/v0.2.1.tar.gz"
-  sha256 "f1f45c02d9cf5b4361461b1513f16d605991c81642cd0e3070a8badbbc90d167"
+  url "https://github.com/Dids/clobber/archive/v0.2.2.tar.gz"
+  sha256 "f8b1f3b1e51ca1904f5ac7639c824b2775625c0e4ade8b3d99647f1df4f268df"
   revision 0
 
   # Setup HEAD support (install with --HEAD)
@@ -45,12 +45,7 @@ class Clobber < Formula
       # Print out target version
       ohai "Building version #{version}.."
 
-      ## TODO: Add timing method/printing for each step, to determine how long each step takes,
-      ##       as the formula-specific installation is taking way too long (over 2 minutes)
-      ##       (alternatively do this in the Makefile of the project?)
-
       # Build the application
-      system "make", "print"
       system "make", "deps"
       system "make", "build", "BINARY_VERSION=#{version}", "BINARY_OUTPUT=#{buildpath}/clobber"
       system "make", "test"
