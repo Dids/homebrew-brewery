@@ -1,8 +1,8 @@
 class Clobber < Formula
   desc "Command-line application for building Clover"
   homepage "https://github.com/Dids/clobber"
-  url "https://github.com/Dids/clobber/archive/v0.2.2.tar.gz"
-  sha256 "f8b1f3b1e51ca1904f5ac7639c824b2775625c0e4ade8b3d99647f1df4f268df"
+  url "https://github.com/Dids/clobber/archive/v0.2.3.tar.gz"
+  sha256 "51d036bf04f769cc8658be84d488cd6d2f402f52cffa4973d6d48a75678efa37"
   revision 0
 
   # Setup HEAD support (install with --HEAD)
@@ -22,6 +22,9 @@ class Clobber < Formula
   
   # We need Xcode/xcodebuild for running the application
   depends_on :xcode
+
+  # We need gettext for bulding EDK/Clover
+  depends_on "gettext"
 
   # Define the installation steps
   def install
