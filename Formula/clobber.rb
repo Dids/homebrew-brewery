@@ -3,7 +3,7 @@ class Clobber < Formula
   homepage "https://github.com/Dids/clobber"
   url "https://github.com/Dids/clobber/archive/v0.2.4.tar.gz"
   sha256 "60da164b6c52c413b1b0d60b539ecccfcaca44240361f3d118ef2b9e25131b69"
-  revision 2
+  revision 3
 
   # Setup HEAD support (install with --HEAD)
   head "https://github.com/Dids/Clobber.git", :branch => "master"
