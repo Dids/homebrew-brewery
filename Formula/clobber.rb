@@ -11,20 +11,17 @@ class Clobber < Formula
   # No bottling necessary
   bottle :unneeded
 
-  # We need dep for build dependencies
-  depends_on "dep" => :build
-
   # We need go for building
   depends_on "go" => :build
+
+  # We need gettext for bulding EDK/Clover
+  depends_on "gettext"
 
   # We needs subversion for SVN support
   depends_on "subversion"
 
   # We need Xcode/xcodebuild for running the application
-  depends_on :xcode
-
-  # We need gettext for bulding EDK/Clover
-  depends_on "gettext"
+  depends_on :xcode => "10"
 
   # Define the installation steps
   def install
