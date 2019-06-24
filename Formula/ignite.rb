@@ -1,4 +1,4 @@
-class Clobber < Formula
+class Ignite < Formula
   desc "Ignition configuration tool for validation and merging multiple files"
   homepage "https://github.com/Dids/ignite"
   #url "https://github.com/Dids/ignite/archive/v0.0.1.tar.gz"
