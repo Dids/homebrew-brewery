@@ -3,7 +3,7 @@ class Clobber < Formula
   homepage "https://github.com/Dids/clobber"
   url "https://github.com/Dids/clobber/archive/v0.2.4.tar.gz"
   sha256 "60da164b6c52c413b1b0d60b539ecccfcaca44240361f3d118ef2b9e25131b69"
-  revision 3
+  revision 4
 
   # Setup HEAD support (install with --HEAD)
   head "https://github.com/Dids/Clobber.git", :branch => "master"
@@ -14,8 +14,11 @@ class Clobber < Formula
   # We need go for building
   depends_on "go" => :build
 
-  # We need gettext for bulding EDK/Clover
+  # We need gettext for building EDK/Clover
   depends_on "gettext"
+
+  # We need nasm for building EDK/Clover
+  depends_on "nasm"
 
   # We needs subversion for SVN support
   depends_on "subversion"
