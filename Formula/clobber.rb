@@ -1,8 +1,8 @@
 class Clobber < Formula
   desc "Command-line application for building Clover"
   homepage "https://github.com/Dids/clobber"
-  url "https://github.com/Dids/clobber/archive/v0.3.5.tar.gz"
-  sha256 "dac239a2b4018c4b1aae87b27a045b8c1c0af405e1a9cbb47dbe23b799c876b0"
+  url "https://github.com/Dids/clobber/archive/v0.3.6.tar.gz"
+  sha256 "d073dc00c3284210bba28289b81089c3c49f4bbc548c26fd4026b989ebf4c93f"
   revision 0
 
   # Setup HEAD support (install with --HEAD)
@@ -13,6 +13,9 @@ class Clobber < Formula
 
   # We need go for building
   depends_on "go" => :build
+
+  # We need gcc for alternate toolcahin support
+  depends_on "gcc@9" => :optional
 
   # We need gettext for building EDK/Clover
   depends_on "gettext"
