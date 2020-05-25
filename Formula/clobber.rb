@@ -1,8 +1,8 @@
 class Clobber < Formula
   desc "Command-line application for building Clover"
   homepage "https://github.com/Dids/clobber"
-  url "https://github.com/Dids/clobber/archive/v0.3.6.tar.gz"
-  sha256 "d073dc00c3284210bba28289b81089c3c49f4bbc548c26fd4026b989ebf4c93f"
+  url "https://github.com/Dids/clobber/archive/v0.3.7.tar.gz"
+  sha256 "dfe5a92318dac46e009a45dc861d6ee81a055c5f5a6cd07ffcb699276de18c0d"
   revision 0
 
   # Setup HEAD support (install with --HEAD)
@@ -27,7 +27,8 @@ class Clobber < Formula
   depends_on "subversion"
 
   # We need Xcode/xcodebuild for running the application
-  depends_on :xcode => "10"
+  # depends_on :xcode => "10"
+  depnds_on :xcode => :recommended
 
   # Define the installation steps
   def install
